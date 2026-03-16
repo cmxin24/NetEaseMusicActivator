@@ -4,7 +4,8 @@
 
 ## 简介
 
-网易云音乐每日自动签到，后台静默运行，不打扰日常浏览体验。适合海外用户搭配 [NetEaseMusicWorld++](https://github.com/kogamitora/NetEaseMusicWorldNext) 使用，手机客户端也将同步解锁。
+网易云音乐每日自动签到，后台静默运行，不打扰日常浏览体验。
+适合海外用户搭配 [NetEaseMusicWorld++](https://github.com/kogamitora/NetEaseMusicWorldNext) 使用，手机客户端也将同步解锁。
 
 ## 主要功能
 
