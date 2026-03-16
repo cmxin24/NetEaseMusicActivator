@@ -1,6 +1,6 @@
 **简体中文** ｜ [English](README_EN.md)
 
-# 网易云音乐自动网页签到
+# NetEaseMusicCheck
 
 ## 简介
 
