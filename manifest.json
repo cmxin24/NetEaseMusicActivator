@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NetEaseMusicCheck BETA",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icons": {
     "16": "images/red16.png",
     "48": "images/red48.png",
