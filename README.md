@@ -20,5 +20,5 @@
 
 1. **登录账号**：请确保您已经在 Chrome 浏览器中访问过 [网易云音乐官网 (music.163.com)](https://music.163.com/) 并成功**登录**您的账号。
 2. **自动运行**：扩展程序会自动读取您的登录状态（Cookies），并在后台自动进行每日的签到任务。
-4. **状态切换**：不需要时点击logo即可进入停用状态，logo将自动切换为灰色。
-3. **海外用户**建议搭配[NetEaseMusicWorld++](https://github.com/kogamitora/NetEaseMusicWorldNext)使用，打开网页后该账号当天会被视为中国ip，手机端也会同步解锁歌曲权限。
+3. **状态切换**：不需要时点击logo即可进入停用状态，logo将自动切换为灰色。
+4. **海外用户**建议搭配[NetEaseMusicWorld++](https://github.com/kogamitora/NetEaseMusicWorldNext)使用，打开网页后该账号当天会被视为中国ip，手机端也会同步解锁歌曲权限。
