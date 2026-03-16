@@ -1,4 +1,4 @@
-[English](README_EN.md) | **中文**
+**简体中文** ｜ [English](README_EN.md)
 
 # NetEaseMusicCheck (网易云音乐自动签到)
 
