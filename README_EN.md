@@ -1,6 +1,6 @@
 [简体中文](README.md) ｜ **English**
 
-# NetEase Cloud Music Auto Web Check-in
+# NetEaseMusicCheck
 
 NetEase Cloud Music daily auto check-in, running silently in the background without disturbing your daily browsing experience. Suitable for overseas users in combination with [NetEaseMusicWorld++](https://github.com/kogamitora/NetEaseMusicWorldNext), the mobile client will also be unlocked synchronously.
 
