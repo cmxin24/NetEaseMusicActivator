@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "NetEaseMusicCheck",
+  "name": "NetEaseMusicCheck BETA",
   "version": "0.0.1",
   "icons": {
     "16": "images/red16.png",
@@ -13,9 +13,9 @@
       "48": "images/red48.png",
       "128": "images/red128.png"
     },
-    "default_title": "TuneWake: Active"
+    "default_title": "NetEaseMusicCheck: Active"
   },
-  "description": "NetEase Cloud Music automatic check-in assistant. It will automatically help you complete the web check-in and receive points in the background every day, and you will be silent and undisturbed throughout the process.",
+  "description": "NetEase Cloud Music automatic check-in assistant. THIS EXTENSION IS FOR BETA TESTING.",
   "permissions": [
     "storage",
     "tabs",

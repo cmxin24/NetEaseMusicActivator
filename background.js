@@ -20,10 +20,10 @@ const ICONS_GRAY = {
 function updateUI(isEnabled) {
     if (isEnabled) {
         chrome.action.setIcon({ path: ICONS_RED });
-        chrome.action.setTitle({ title: "TuneWake: Active" });
+        chrome.action.setTitle({ title: "NetEaseMusicCheck: Active" });
     } else {
         chrome.action.setIcon({ path: ICONS_GRAY });
-        chrome.action.setTitle({ title: "TuneWake: Disabled (Click to enable)" });
+        chrome.action.setTitle({ title: "NetEaseMusicCheck: Disabled (Click to enable)" });
     }
 }
 
@@ -95,7 +95,7 @@ function checkAndRun() {
         updateUI(isEnabled);
 
         if (!isEnabled) {
-            console.log("TuneWake is OFF. Skipping...");
+            console.log("NetEaseMusicCheck is OFF. Skipping...");
             return;
         }
 
