@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NetEaseMusicCheck",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "icons": {
     "16": "images/red16.png",
     "48": "images/red48.png",
@@ -18,7 +18,6 @@
   "description": "NetEase Cloud Music automatic check-in assistant.",
   "permissions": [
     "storage",
-    "tabs",
     "alarms",
     "cookies"
   ],

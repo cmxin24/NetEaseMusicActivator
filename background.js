@@ -53,6 +53,7 @@ function performCheckIn() {
         fetch(apiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            credentials: 'include',
             body: params
         })
         .then(res => res.json())
