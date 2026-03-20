@@ -96,7 +96,7 @@ function checkAndRun() {
         updateUI(isEnabled);
 
         if (!isEnabled) {
-            console.log("NetEaseMusicCheck is OFF. Skipping...");
+            console.log("NetEaseMusicActivator is OFF. Skipping...");
             return;
         }
 
