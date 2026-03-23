@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NetEaseMusicActivator",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "icons": {
     "16": "images/red16.png",
     "48": "images/red48.png",
@@ -19,7 +19,8 @@
   "permissions": [
     "storage",
     "alarms",
-    "cookies"
+    "cookies",
+    "notifications"
   ],
   "host_permissions": [
     "*://*.music.163.com/*",

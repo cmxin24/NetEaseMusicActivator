@@ -1,6 +1,7 @@
 const TARGET_URL = "https://music.163.com/";
 const BUFFER_TIME_MS = 2000;
 const ALARM_NAME = "smartDailyNetEaseCheck";
+const LOGIN_NOTIFICATION_ID = "netease_login_needed";
 
 // Icon Paths
 const ICONS_RED = {
@@ -79,17 +80,13 @@ function performCheckIn() {
 }
 
 /**
- * Tab Manager (Silent or Manual)
+ * Task Executors
  */
-function executeTask(today, isSilent) {
-    chrome.tabs.create({ url: TARGET_URL, active: !isSilent }, (tab) => {
+function executeSuccessTask(today) {
+    // Only silent mode for success
+    chrome.tabs.create({ url: TARGET_URL, active: false }, (tab) => {
         chrome.storage.local.set({ lastOpenedDate: today });
         
-        if (!isSilent) {
-            chrome.windows.update(tab.windowId, { focused: true });
-            return;
-        }
-
         const tabId = tab.id;
         const listener = (id, info) => {
             if (id === tabId && info.status === 'complete') {
@@ -101,6 +98,23 @@ function executeTask(today, isSilent) {
             }
         };
         chrome.tabs.onUpdated.addListener(listener);
+    });
+}
+
+function executeLoginTask() {
+    // Opens the login page in the background and keeps it open
+    chrome.tabs.create({ url: TARGET_URL, active: false }, (tab) => {
+        console.log("Login page opened in background:", tab.id);
+    });
+}
+
+function showLoginNotification() {
+    chrome.notifications.create(LOGIN_NOTIFICATION_ID, {
+        type: 'basic',
+        iconUrl: ICONS_RED["128"],
+        title: 'NetEaseMusicActivator',
+        message: '请登录您的账号完成签到。Login required.',
+        priority: 2
     });
 }
 
@@ -124,7 +138,13 @@ function checkAndRun() {
                 if (cookie) {
                     success = await performCheckIn();
                 }
-                executeTask(today, success);
+
+                if (success) {
+                    executeSuccessTask(today);
+                } else {
+                    executeLoginTask(); // Open background tab
+                    showLoginNotification();
+                }
             });
         }
         scheduleNextRun();
@@ -148,6 +168,22 @@ chrome.action.onClicked.addListener(() => {
 
 chrome.alarms.onAlarm.addListener((a) => {
     if (a.name === ALARM_NAME) checkAndRun();
+});
+
+chrome.notifications.onClicked.addListener((notificationId) => {
+    if (notificationId === LOGIN_NOTIFICATION_ID) {
+        // Find existing tab with music.163.com
+        chrome.tabs.query({ url: "*://music.163.com/*" }, (tabs) => {
+            if (tabs && tabs.length > 0) {
+                const tab = tabs[0];
+                chrome.tabs.update(tab.id, { active: true });
+                chrome.windows.update(tab.windowId, { focused: true });
+            } else {
+                 chrome.tabs.create({ url: TARGET_URL });
+            }
+        });
+        chrome.notifications.clear(notificationId);
+    }
 });
 
 chrome.runtime.onStartup.addListener(checkAndRun);
