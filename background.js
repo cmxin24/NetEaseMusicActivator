@@ -42,26 +42,39 @@ function scheduleNextRun() {
  * API Check-in Logic
  */
 function performCheckIn() {
-    chrome.cookies.get({ url: TARGET_URL, name: "__csrf" }, (cookie) => {
-        const csrfToken = cookie ? cookie.value : '';
-        const apiUrl = "https://music.163.com/api/point/dailyTask?type=1";
-        
-        const params = new URLSearchParams();
-        params.append('type', '1');
-        if (csrfToken) params.append('csrf_token', csrfToken);
+    return new Promise((resolve) => {
+        chrome.cookies.get({ url: TARGET_URL, name: "__csrf" }, (cookie) => {
+            const csrfToken = cookie ? cookie.value : '';
+            const apiUrl = "https://music.163.com/api/point/dailyTask?type=1";
+            
+            const params = new URLSearchParams();
+            params.append('type', '1');
+            if (csrfToken) params.append('csrf_token', csrfToken);
 
-        fetch(apiUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            credentials: 'include',
-            body: params
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.code === 200) console.log("Check-in success! Points:", data.point);
-            else if (data.code === -2) console.log("Already checked in today.");
-        })
-        .catch(err => console.error("Check-in error:", err));
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                credentials: 'include',
+                body: params
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.code === 200) {
+                    console.log("Check-in success! Points:", data.point);
+                    resolve(true);
+                } else if (data.code === -2) {
+                    console.log("Already checked in today.");
+                    resolve(true);
+                } else {
+                    console.log("Check-in failed/Auth required. Code:", data.code);
+                    resolve(false);
+                }
+            })
+            .catch(err => {
+                console.error("Check-in error:", err);
+                resolve(false);
+            });
+        });
     });
 }
 
@@ -71,7 +84,11 @@ function performCheckIn() {
 function executeTask(today, isSilent) {
     chrome.tabs.create({ url: TARGET_URL, active: !isSilent }, (tab) => {
         chrome.storage.local.set({ lastOpenedDate: today });
-        if (!isSilent) return; // Stay open for manual login
+        
+        if (!isSilent) {
+            chrome.windows.update(tab.windowId, { focused: true });
+            return;
+        }
 
         const tabId = tab.id;
         const listener = (id, info) => {
@@ -102,13 +119,12 @@ function checkAndRun() {
 
         const today = new Date().toDateString();
         if (res.lastOpenedDate !== today) {
-            chrome.cookies.get({ url: TARGET_URL, name: "MUSIC_U" }, (cookie) => {
+            chrome.cookies.get({ url: TARGET_URL, name: "MUSIC_U" }, async (cookie) => {
+                let success = false;
                 if (cookie) {
-                    performCheckIn();
-                    executeTask(today, true);
-                } else {
-                    executeTask(today, false);
+                    success = await performCheckIn();
                 }
+                executeTask(today, success);
             });
         }
         scheduleNextRun();
