@@ -6,7 +6,7 @@
 
 网易云音乐每日自动签到，后台静默运行，不打扰日常浏览体验。
 
-适合海外用户搭配 [NetEaseMusicWorld++](https://github.com/kogamitora/NetEaseMusicWorldNext) 使用，手机电脑等客户端也将同步解锁。
+适合海外用户搭配 [NetEaseMusicWorld++](https://github.com/kogamitora/NetEaseMusicWorldNext) 使用，每日刷新歌曲播放权限，手机电脑等客户端也将同步解锁。
 
 ## 主要功能
 
@@ -19,7 +19,7 @@
 
 点击下方链接跳转至Chrome Web Store, 点击右侧蓝色按钮「添加到XXX」即可（XXX为您的浏览器，如Chrome或者Brave等）。
 
-[https://chromewebstore.google.com/detail/neteasemusicactivator/blmpkmpldchiiecilhgpahegoibafgci](https://chromewebstore.google.com/detail/neteasemusicactivator/blmpkmpldchiiecilhgpahegoibafgci)
+[Chrome应用商店](https://chromewebstore.google.com/detail/neteasemusicactivator/blmpkmpldchiiecilhgpahegoibafgci)
 
 ## 使用说明
 
@@ -52,7 +52,7 @@ NetEase Cloud Music daily auto check-in, running silently in the background with
 
 Open the link below to jump to the Chrome Web Store, click the blue button on the right "Add to XXX" (XXX is your browser, such as Chrome or Brave, etc.).
 
-[https://chromewebstore.google.com/detail/neteasemusicactivator/blmpkmpldchiiecilhgpahegoibafgci](https://chromewebstore.google.com/detail/neteasemusicactivator/blmpkmpldchiiecilhgpahegoibafgci)
+[Chrome Web Store](https://chromewebstore.google.com/detail/neteasemusicactivator/blmpkmpldchiiecilhgpahegoibafgci)
 
 ## Usage
 
